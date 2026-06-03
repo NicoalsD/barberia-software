@@ -3,13 +3,22 @@ package com.senorturno.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Document(collection = "servicios")
 public class Servicio {
 
     @Id
+    @Schema(example = "64f1a2b3c4d5e6f7a8b9c0d3")
     private String id;
+
+    @Schema(example = "Corte de Cabello Premium")
     private String nombre;
+
+    @Schema(example = "30")
     private int duracionMinutos;
+
+    @Schema(description = "Tipo de servicio", example = "CORTE_CABELLO")
     private TipoServicio tipo;
 
     public Servicio() {

@@ -15,6 +15,7 @@ import com.senorturno.dto.ClienteRequestDTO;
 import com.senorturno.model.Barbero;
 import com.senorturno.model.Cliente;
 import com.senorturno.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -32,12 +33,15 @@ public class UsuarioController {
     }
 
     @GetMapping("/clientes/{id}")
-    public ResponseEntity<Cliente> obtenerCliente(@PathVariable String id) {
+    public ResponseEntity<Cliente> obtenerCliente(
+            @PathVariable @Parameter(description = "ID del cliente", example = "64f1a2b3c4d5e6f7a8b9c0d1") String id) {
         return ResponseEntity.ok(usuarioService.obtenerCliente(id));
     }
 
     @PatchMapping("/clientes/{id}")
-    public ResponseEntity<Cliente> actualizarCliente(@PathVariable String id, @RequestBody ClienteRequestDTO dto) {
+    public ResponseEntity<Cliente> actualizarCliente(
+            @PathVariable @Parameter(description = "ID del cliente", example = "64f1a2b3c4d5e6f7a8b9c0d1") String id,
+            @RequestBody ClienteRequestDTO dto) {
         return ResponseEntity.ok(usuarioService.actualizarCliente(id, dto));
     }
 
@@ -47,7 +51,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/barberos/{id}")
-    public ResponseEntity<Barbero> obtenerBarbero(@PathVariable String id) {
+    public ResponseEntity<Barbero> obtenerBarbero(
+            @PathVariable @Parameter(description = "ID del barbero", example = "64f1a2b3c4d5e6f7a8b9c0d2") String id) {
         return ResponseEntity.ok(usuarioService.obtenerBarbero(id));
     }
 }

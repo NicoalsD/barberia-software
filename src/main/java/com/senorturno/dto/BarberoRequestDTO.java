@@ -1,10 +1,19 @@
 package com.senorturno.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class BarberoRequestDTO {
 
+    @Schema(example = "Carlos Barber")
     private String nombre;
+
+    @Schema(example = "+573117654321")
     private String telefono;
+
+    @Schema(example = "carlos.barber@example.com")
     private String email;
+
+    @Schema(example = "Experto en cortes modernos y perfilado de barba.")
     private String descripcion;
 
     public String getNombre() {

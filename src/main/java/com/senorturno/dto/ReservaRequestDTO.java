@@ -3,12 +3,23 @@ package com.senorturno.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class ReservaRequestDTO {
 
+    @Schema(example = "64f1a2b3c4d5e6f7a8b9c0d1")
     private String clienteId;
+
+    @Schema(example = "64f1a2b3c4d5e6f7a8b9c0d2")
     private String barberoId;
+
+    @Schema(example = "64f1a2b3c4d5e6f7a8b9c0d3")
     private String servicioId;
+
+    @Schema(example = "2026-06-15")
     private LocalDate fecha;
+
+    @Schema(type = "string", pattern = "HH:mm:ss", example = "14:30:00")
     private LocalTime horaInicio;
 
     public String getClienteId() {

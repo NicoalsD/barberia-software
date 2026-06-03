@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.senorturno.model.Servicio;
 import com.senorturno.service.ServicioService;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RestController
 @RequestMapping("/servicios")
@@ -37,17 +38,21 @@ public class ServicioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Servicio> obtenerServicio(@PathVariable String id) {
+    public ResponseEntity<Servicio> obtenerServicio(
+            @PathVariable @Parameter(description = "ID del servicio", example = "64f1a2b3c4d5e6f7a8b9c0d3") String id) {
         return ResponseEntity.ok(servicioService.obtenerServicio(id));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Servicio> actualizarServicio(@PathVariable String id, @RequestBody Servicio datos) {
+    public ResponseEntity<Servicio> actualizarServicio(
+            @PathVariable @Parameter(description = "ID del servicio", example = "64f1a2b3c4d5e6f7a8b9c0d3") String id,
+            @RequestBody Servicio datos) {
         return ResponseEntity.ok(servicioService.actualizarServicio(id, datos));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarServicio(@PathVariable String id) {
+    public ResponseEntity<Void> eliminarServicio(
+            @PathVariable @Parameter(description = "ID del servicio", example = "64f1a2b3c4d5e6f7a8b9c0d3") String id) {
         servicioService.eliminarServicio(id);
         return ResponseEntity.noContent().build();
     }
