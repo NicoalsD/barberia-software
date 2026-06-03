@@ -1,1 +1,8 @@
+target/
 wiki/
+graphify-out/
+.claude/
+*.class
+.idea/
+*.iml
+.vscode/
